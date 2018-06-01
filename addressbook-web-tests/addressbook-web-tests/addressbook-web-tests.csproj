@@ -7,7 +7,7 @@
     <ProjectGuid>{DAE1DE09-BD48-4FC2-97DC-A95336D1017B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>addressbook_web_tests</RootNamespace>
+    <RootNamespace>webAddressbookTests</RootNamespace>
     <AssemblyName>addressbook-web-tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -65,8 +65,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AccountData.cs" />
     <Compile Include="Circle.cs" />
     <Compile Include="Figure.cs" />
+    <Compile Include="GroupData.cs" />
     <Compile Include="Square.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
