@@ -11,18 +11,42 @@ namespace WebAddressbookTests
 {
     public class ContactHelper : HelperBase
     {
+
         public ContactHelper(ApplicationManager manager)
             : base(manager)
         {
 
         }
 
-        public void SubmitContactCreation()
+        public ContactHelper SubmitContactCreation()
         {
-            driver.FindElement(By.XPath("//input[contains(@name,'submit')]"));
+            driver.FindElement(By.XPath("//input[@name='submit']")).Click(); 
+            return this;
         }
 
-        public void FillContactForm(ContactData contact)
+        public ContactHelper Remove(int p)
+        {
+            manager.Navigator.GoToHomePage();
+            SelectContact(p);
+            RemoveContact();
+            return this;
+            
+        }
+
+        public ContactHelper RemoveContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            driver.SwitchTo().Alert().Accept();
+            return this;
+        }
+
+        public ContactHelper SelectContact(int index)
+        {
+            driver.FindElement(By.XPath("//input[@name='selected[]']")).Click();
+            return this;
+        }
+
+        public ContactHelper FillContactForm(ContactData contact)
         {
             driver.FindElement(By.Name("firstname")).Clear();
             driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
@@ -68,12 +92,23 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("phone2")).SendKeys(contact.Phone2);
             driver.FindElement(By.Name("notes")).Clear();
             driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);
+            return this;
         }
 
-        public void InitContactCreation()
+        public ContactHelper InitContactCreation()
         {
             driver.FindElement(By.LinkText("add new")).Click();
+            return this;
         }
+
+
+
+
+        public ContactHelper Modify(int p, ContactData newData)
+        {
+            return this;
+        }
+
 
     }
 }

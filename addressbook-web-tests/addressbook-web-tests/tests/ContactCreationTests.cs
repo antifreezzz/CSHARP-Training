@@ -39,9 +39,9 @@ namespace WebAddressbookTests
             contact.Phone2 = "Phone2";
             contact.Notes = "Notes";
             
-            app.contacts.InitContactCreation();
-            app.contacts.FillContactForm(contact);
-            app.contacts.SubmitContactCreation();
+            app.Contacts.InitContactCreation();
+            app.Contacts.FillContactForm(contact);
+            app.Contacts.SubmitContactCreation();
             app.Navigator.GoToHomePage();
         }
 

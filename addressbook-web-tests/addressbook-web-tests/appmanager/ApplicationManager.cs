@@ -79,7 +79,7 @@ namespace WebAddressbookTests
             }
         }
 
-        public ContactHelper contacts
+        public ContactHelper Contacts
         {
             get
             {
