@@ -14,7 +14,7 @@ namespace WebAddressbookTests
 
         public string baseURL;
 
-        public NavigationHelper(IWebDriver driver, string baseUrl) :base(driver)
+        public NavigationHelper(ApplicationManager manager, string baseUrl) :base(manager)
         {
             this.baseURL = baseURL;
         }
@@ -22,7 +22,7 @@ namespace WebAddressbookTests
 
         public void GoToHomePage()
         {
-            driver.Navigate().GoToUrl(baseURL + "addressbook/");
+            driver.Navigate().GoToUrl(baseURL + "/addressbook/");
         }
 
         public void GoToGroupsPage()
