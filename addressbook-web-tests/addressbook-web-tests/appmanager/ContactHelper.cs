@@ -9,59 +9,20 @@ using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbookTests
 {
-    public class TestBase
+    public class ContactHelper : HelperBase
     {
-
-        protected IWebDriver driver;
-        private StringBuilder verificationErrors;
-        protected string baseURL;
-
-        protected LoginHelper loginHelper;
-        protected NavigationHelper navigator;
-        protected GroupHelper groupHelper;
-
-        [SetUp]
-        public void SetupTest()
+        public ContactHelper(IWebDriver driver)
+            : base(driver)
         {
-            FirefoxOptions options = new FirefoxOptions();
-            options.BrowserExecutableLocation = @"D:\Program Files (x86)\Mozilla Firefox4532\firefox.exe";
-            options.UseLegacyImplementation = true;
-            driver = new FirefoxDriver(options);
-            baseURL = "http://localhost/";
-            verificationErrors = new StringBuilder();
-
-            loginHelper = new LoginHelper(driver);
-            navigator = new NavigationHelper(driver, baseURL);
-            groupHelper = new GroupHelper(driver);
 
         }
 
-        [TearDown]
-        public void TeardownTest()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignore errors if unable to close the browser
-            }
-            Assert.AreEqual("", verificationErrors.ToString());
-        }
-
-
-
-
-
-
-
-        protected void SubmitContactCreation()
+        public void SubmitContactCreation()
         {
             driver.FindElement(By.XPath("//input[contains(@name,'submit')]"));
         }
 
-        protected void FillContactForm(ContactData contact)
+        public void FillContactForm(ContactData contact)
         {
             driver.FindElement(By.Name("firstname")).Clear();
             driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
@@ -109,13 +70,10 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);
         }
 
-        protected void InitContactCreation()
+        public void InitContactCreation()
         {
             driver.FindElement(By.LinkText("add new")).Click();
         }
-
-
-
 
     }
 }

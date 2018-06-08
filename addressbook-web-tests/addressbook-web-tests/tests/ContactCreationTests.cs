@@ -41,12 +41,12 @@ namespace WebAddressbookTests
             
 
 
-            navigator.GoToHomePage();
-            loginHelper.Login(new AccountData("admin", "secret"));
-            InitContactCreation();
-            FillContactForm(contact);
-            SubmitContactCreation();
-            navigator.GoToHomePage();
+            app.Navigator.GoToHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
+            app.contacts.InitContactCreation();
+            app.contacts.FillContactForm(contact);
+            app.contacts.SubmitContactCreation();
+            app.Navigator.GoToHomePage();
         }
 
 
