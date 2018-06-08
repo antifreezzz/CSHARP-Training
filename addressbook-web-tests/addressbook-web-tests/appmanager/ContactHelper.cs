@@ -106,6 +106,23 @@ namespace WebAddressbookTests
 
         public ContactHelper Modify(int p, ContactData newData)
         {
+            manager.Navigator.GoToHomePage();
+            InitContactModification();
+            FillContactForm(newData);
+            SubmitContactModification();
+
+            return this;
+        }
+
+        private ContactHelper SubmitContactModification()
+        {
+            driver.FindElement(By.XPath("//input[@name='update']"));
+            return this;
+        }
+
+        private ContactHelper InitContactModification()
+        {
+            driver.FindElement(By.XPath("//img[contains(@title,'Edit')]"));
             return this;
         }
 
